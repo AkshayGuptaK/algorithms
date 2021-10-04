@@ -10,7 +10,7 @@ def counting_inversions(numbers):
     if len(numbers) <= 1:
         return inversions
     mid = len(numbers) // 2
-    [_, inversions] = merge(
+    _, inversions = merge(
         counting_inversions_recur(numbers[:mid], inversions),
         counting_inversions_recur(numbers[mid:], inversions),
     )
@@ -27,9 +27,9 @@ def counting_inversions_recur(numbers, inversions):
     )
 
 
-def merge(data1, data2):
-    [left, left_inversions] = data1
-    [right, right_inversions] = data2
+def merge(left_data, right_data):
+    left, left_inversions = left_data
+    right, right_inversions = right_data
     sorted = []
     left_index = 0
     right_index = 0
@@ -45,7 +45,7 @@ def merge(data1, data2):
             right_index += 1
             inversions += 1
 
-    return [sorted + left[left_index:] + right[right_index:], inversions]
+    return (sorted + left[left_index:] + right[right_index:], inversions)
 
 
 print(counting_inversions([1, 4, 3, 2]))
