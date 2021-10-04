@@ -19,7 +19,7 @@ def counting_inversions(numbers):
 
 def counting_inversions_recur(numbers, inversions):
     if len(numbers) == 1:
-        return [numbers, inversions]
+        return (numbers, inversions)
     mid = len(numbers) // 2
     return merge(
         counting_inversions_recur(numbers[0:mid], inversions),

@@ -1,4 +1,4 @@
-from algorithms.src.counting_inversions import counting_inversions
+from algorithms.src.hw2.counting_inversions import counting_inversions
 
 
 def test_empty_input():
