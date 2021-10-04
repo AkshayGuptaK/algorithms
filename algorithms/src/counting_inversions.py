@@ -43,9 +43,6 @@ def merge(left_data, right_data):
         else:
             sorted.append(right_current)
             right_index += 1
-            inversions += 1
+            inversions += len(left) - left_index
 
     return (sorted + left[left_index:] + right[right_index:], inversions)
-
-
-print(counting_inversions([1, 4, 3, 2]))
