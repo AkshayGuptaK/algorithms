@@ -5,25 +5,17 @@
 #
 
 
+def main(numbers):
+    return counting_inversions(numbers)[1]
+
+
 def counting_inversions(numbers):
-    inversions = 0
     if len(numbers) <= 1:
-        return inversions
-    mid = len(numbers) // 2
-    _, inversions = merge(
-        counting_inversions_recur(numbers[:mid], inversions),
-        counting_inversions_recur(numbers[mid:], inversions),
-    )
-    return inversions
-
-
-def counting_inversions_recur(numbers, inversions):
-    if len(numbers) == 1:
-        return (numbers, inversions)
+        return (numbers, 0)
     mid = len(numbers) // 2
     return merge(
-        counting_inversions_recur(numbers[0:mid], inversions),
-        counting_inversions_recur(numbers[mid:], inversions),
+        counting_inversions(numbers[0:mid]),
+        counting_inversions(numbers[mid:]),
     )
 
 
