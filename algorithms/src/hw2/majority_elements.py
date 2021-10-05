@@ -6,7 +6,7 @@
 # any form of sets or maps with constant time insertion and lookups. However you can answer
 # questions of the form: “is A[i] = A[j]?” in constant time.
 
-
+# Divide and Conquer
 def main(elems):
     return majority_elements(elems)[1]
 
@@ -28,8 +28,30 @@ def combine(left_data, right_data):
     left, left_majority = left_data
     right, right_majority = right_data
     combined = left + right
-    if left_majority != False and combined.count(left_majority) > len(combined) // 2:
+    if left_majority != None and combined.count(left_majority) > len(combined) // 2:
         return (combined, left_majority)
-    if right_majority != False and combined.count(right_majority) > len(combined) // 2:
+    if right_majority != None and combined.count(right_majority) > len(combined) // 2:
         return (combined, right_majority)
-    return (combined, False)
+    return (combined, None)
+
+
+# Boyer-Moore
+def bm_majority(elems):
+    majority = None
+    i = 0
+
+    for elem in elems:
+        if i == 0:
+            majority = elem
+            i += 1
+        elif majority == elem:
+            i += 1
+        else:
+            i -= 1
+
+    assert majority != None
+
+    if elems.count(majority) > len(elems) // 2:
+        return majority
+
+    return None
