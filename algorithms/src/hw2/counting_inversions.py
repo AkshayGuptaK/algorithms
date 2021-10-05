@@ -14,7 +14,7 @@ def counting_inversions(numbers):
         return (numbers, 0)
     mid = len(numbers) // 2
     return merge(
-        counting_inversions(numbers[0:mid]),
+        counting_inversions(numbers[:mid]),
         counting_inversions(numbers[mid:]),
     )
 
